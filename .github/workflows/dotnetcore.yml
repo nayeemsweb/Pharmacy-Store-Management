@@ -1,4 +1,4 @@
-name: DevTeam Build
+name: PSM Build
 
 on:
   push:
@@ -13,13 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET 6
+    - name: Setup .NET 8
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore "src/DevSkill.DevTeam/DevSkill.DevTeam.sln"
+      run: dotnet restore "Pharmacy-Store-Management\PSM.sln"
     - name: Build
-      run: dotnet build "src/DevSkill.DevTeam/DevSkill.DevTeam.sln" --configuration Release --no-restore
+      run: dotnet build "Pharmacy-Store-Management\PSM.sln" --configuration Release --no-restore
     - name: Test
-      run: dotnet test "src/DevSkill.DevTeam/DevSkill.DevTeam.sln" --no-restore --verbosity normal
+      run: dotnet test "Pharmacy-Store-Management\PSM.sln" --no-restore --verbosity normal
