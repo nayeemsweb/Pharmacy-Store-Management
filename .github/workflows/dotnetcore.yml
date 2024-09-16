@@ -1,0 +1,25 @@
+name: DevTeam Build
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET 6
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore "src/DevSkill.DevTeam/DevSkill.DevTeam.sln"
+    - name: Build
+      run: dotnet build "src/DevSkill.DevTeam/DevSkill.DevTeam.sln" --configuration Release --no-restore
+    - name: Test
+      run: dotnet test "src/DevSkill.DevTeam/DevSkill.DevTeam.sln" --no-restore --verbosity normal
