@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore "Pharmacy-Store-Management\PSM.sln"
+      run: dotnet restore "Pharmacy-Store-Management/PSM.sln"
     - name: Build
-      run: dotnet build "Pharmacy-Store-Management\PSM.sln" --configuration Release --no-restore
+      run: dotnet build "Pharmacy-Store-Management/PSM.sln" --configuration Release --no-restore
     - name: Test
-      run: dotnet test "Pharmacy-Store-Management\PSM.sln" --no-restore --verbosity normal
+      run: dotnet test "Pharmacy-Store-Management/PSM.sln" --no-restore --verbosity normal
